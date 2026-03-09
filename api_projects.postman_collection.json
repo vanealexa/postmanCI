@@ -1,0 +1,313 @@
+{
+  "info": {
+    "_postman_id": "845f8032-7624-4cf3-9a39-e1d30fffb15e",
+    "name": "Projects",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29721247"
+  },
+  "item": [
+    {
+      "name": "Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var response = pm.response.json();\r",
+              "pm.collectionVariables.set(\"PROJECT_ID\", response.Id);\r",
+              "\r",
+              "pm.test(\"Verify Status code is 200\", function(){ //Status code\r",
+              "    pm.response.to.have.status(200)\r",
+              "\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"JMeter Carlos\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(4);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Acerlg2026@",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "alexa.vane.01@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"Content\": \"JMeter Carlos\",\r\n  \"Icon\": 4\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function(){ //Status code\r",
+              "    pm.response.to.have.status(200)\r",
+              "\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"JMeter Carlos Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Acerlg2026@",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "alexa.vane.01@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"Content\": \"JMeter Carlos Actualizado\",\r\n  \"Icon\": 2\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Leer",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function(){ //Status code\r",
+              "    pm.response.to.have.status(200)\r",
+              "\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"JMeter Carlos Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Acerlg2026@",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "alexa.vane.01@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function(){ //Status code\r",
+              "    pm.response.to.have.status(200)\r",
+              "\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"JMeter Carlos Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Deleted Icon\", function () { // response body\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Deleted).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Acerlg2026@",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "alexa.vane.01@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/4523060.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "4523060.json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "PROJECT_ID",
+      "value": ""
+    }
+  ]
+}
